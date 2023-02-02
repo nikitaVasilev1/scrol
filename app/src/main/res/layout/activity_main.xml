@@ -1,132 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/author"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:lines="1"
-        android:text="@string/hello"
-        app:layout_constraintBottom_toTopOf="@+id/date"
-        app:layout_constraintEnd_toStartOf="@+id/menu"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        android:orientation="vertical">
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/comon_spacing"
-        android:layout_marginEnd="@dimen/comon_spacing"
-        android:layout_marginBottom="@dimen/comon_spacing"
-        android:text="@string/date"
-        app:layout_constraintBottom_toBottomOf="@id/barrier"
-        app:layout_constraintEnd_toStartOf="@id/menu"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@id/author" />
+</ScrollView>
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="date,image,menu" />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="text" />
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier" />
-
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="@dimen/post_avatar_size"
-        android:layout_height="@dimen/post_avatar_size"
-        android:src="@drawable/avatar_foreground"
-        app:layout_constraintBottom_toTopOf="@id/barrier"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/viewText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="50dp"
-        android:paddingEnd="6dp"
-        app:layout_constraintEnd_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@id/barrier2"
-        tools:text="5" />
-
-    <ImageButton
-        android:id="@+id/menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/cardview_light_background"
-        android:src="@drawable/more"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/repost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/cardview_light_background"
-        android:src="@drawable/share"
-        app:layout_constraintStart_toEndOf="@id/likeText"
-        app:layout_constraintTop_toTopOf="@id/barrier2" />
-
-    <TextView
-        android:id="@+id/repostText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="6dp"
-        android:paddingEnd="50dp"
-        app:layout_constraintStart_toEndOf="@id/repost"
-        app:layout_constraintTop_toTopOf="@id/barrier2"
-        tools:text="5" />
-
-    <ImageButton
-        android:id="@+id/like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/cardview_light_background"
-        android:src="@drawable/like"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/barrier2" />
-
-    <TextView
-        android:id="@+id/likeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="6dp"
-        android:paddingEnd="50dp"
-        app:layout_constraintStart_toEndOf="@id/like"
-        app:layout_constraintTop_toTopOf="@id/barrier2"
-        tools:text="5" />
-
-    <ImageView
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/barrier2" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
