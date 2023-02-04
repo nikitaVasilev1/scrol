@@ -2,8 +2,9 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import com.example.myapplication.adapter.PostAdapter
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.databinding.CardPostBinding
 import com.example.myapplication.viewmodel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -14,27 +15,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel: PostViewModel by viewModels()
-        viewModel.data.observe(this) { post ->
-            posts.map { post ->
-                CardPostBinding.inflate(layoutInflater, binding.container, true).apply {
-                    author.text = post.author
-                    text.text = post.content
-                    date.text = post.published
-                    like.setImageResource(
-                        if (post.likedByMe) R.drawable.liked else R.drawable.like
-                    )
-                    likeText.text = post.numberOfReactrion(post.likes)
-                    repostText.text = post.numberOfReactrion(post.reposts)
-
-                    like.setOnClickListener {
-                        viewModel.like(post.id)
-                    }
-
-                    repost.setOnClickListener {
-                        viewModel.repost(post.id)
-                    }
-                }.root
-            }
+        val adapter = PostAdapter({
+            viewModel.like(it.id)
+        },
+            {
+                viewModel.repost(it.id)
+            })
+        binding.list.adapter = adapter
+        viewModel.data.observe(this) { posts ->
+            adapter.submitList(posts)
         }
     }
 }

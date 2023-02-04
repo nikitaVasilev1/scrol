@@ -21,12 +21,14 @@ class PostRepository : Repository {
         )
     )
 
-    val data = MutableLiveData(posts)
-    override fun get(): LiveData<Post> = data
+    private val data = MutableLiveData(posts)
+    override fun get(): LiveData<List<Post>> = data
 
     override fun like(id: Long) {
         posts = posts.map {
-            if (it.id != id) it else it.copy(likedByMe = !it.likedByMe)
+            if (it.id != id) it else it.copy(likedByMe = !it.likedByMe,
+                likes = if (it.likedByMe) it.likes + 1 else  it.likes - 1
+            )
         }
         data.value = posts
     }
