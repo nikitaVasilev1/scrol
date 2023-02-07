@@ -1,6 +1,4 @@
 package com.example.myapplication
-
-import java.text.DecimalFormat
 import kotlin.math.pow
 
 data class Post(
