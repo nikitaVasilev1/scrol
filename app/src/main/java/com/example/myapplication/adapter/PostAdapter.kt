@@ -48,7 +48,7 @@ class PostViewHolder(
             repost.setOnClickListener {
                 onShareListenner(post)
             }
-
+            likeText.text = post.numberOfReactrion(post.likes)
             repostText.text = post.numberOfReactrion(post.reposts)
         }
     }

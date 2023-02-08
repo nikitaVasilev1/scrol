@@ -10,9 +10,9 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.RecyclerView"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/card_post"
-        android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
+        android:orientation="vertical"></androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>
 
