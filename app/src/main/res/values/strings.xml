@@ -12,4 +12,7 @@ more, aim higher, run faster. Our mission
 of changes - http: //netology.gy/fyb</string>
     <string name="date">"21 may at 18:36 "</string>
     <string name="app_name">Nmedia!</string>
+    <string name="post_text">Post Text</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
 </resources>

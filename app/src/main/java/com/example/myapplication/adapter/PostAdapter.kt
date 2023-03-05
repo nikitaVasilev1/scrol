@@ -2,6 +2,7 @@ package com.example.myapplication.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -9,17 +10,21 @@ import com.example.myapplication.Post
 import com.example.myapplication.R
 import com.example.myapplication.databinding.CardPostBinding
 
-typealias OnLikeListenner = (post: Post) -> Unit
+interface onInteractionListener{
+    fun onLike(post:Post){}
+    fun onEdit(post:Post){}
+    fun onRemove(post:Post){}
+    fun onShare(post:Post){}
+    fun onCancel(){}
+}
 
 class PostAdapter(
-    private val onLikeListenner: OnLikeListenner,
-    private val onShareListenner: OnLikeListenner
-) :
-    ListAdapter<Post, PostViewHolder>(PostDiffCallback()) {
+    private val onInteractionListener: onInteractionListener
+) : ListAdapter<Post, PostViewHolder>(PostDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = CardPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PostViewHolder(binding, onLikeListenner,onShareListenner)
+        return PostViewHolder(binding, onInteractionListener)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
@@ -31,8 +36,7 @@ class PostAdapter(
 
 class PostViewHolder(
     private val binding: CardPostBinding,
-    private val onLikeListenner: OnLikeListenner,
-    private val onShareListenner: OnLikeListenner
+    private val onInteractionListener: onInteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         binding.apply {
@@ -42,11 +46,29 @@ class PostViewHolder(
             like.setImageResource(
                 if (post.likedByMe) R.drawable.liked else R.drawable.like
             )
+            menu.setOnClickListener {
+                PopupMenu(it.context, it).apply {
+                    inflate(R.menu.options_post)
+                    setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.remove -> {
+                                onInteractionListener.onRemove(post)
+                                true
+                            }
+                            R.id.edit -> {
+                                onInteractionListener.onEdit(post)
+                                true
+                            }
+                            else -> false
+                        }
+                    }
+                }.show()
+            }
             like.setOnClickListener {
-                onLikeListenner(post)
+                onInteractionListener.onLike(post)
             }
             repost.setOnClickListener {
-                onShareListenner(post)
+                onInteractionListener.onShare(post)
             }
             likeText.text = post.numberOfReactrion(post.likes)
             repostText.text = post.numberOfReactrion(post.reposts)
@@ -65,4 +87,5 @@ class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
     }
 
 }
+
 
