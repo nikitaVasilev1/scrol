@@ -7,4 +7,5 @@
     <string name="post_text">Текст Поста</string>
     <string name="edit">Редактировать</string>
     <string name="remove">Удалить</string>
+    <string name="edit_message">Редактируемый текст</string>
 </resources>

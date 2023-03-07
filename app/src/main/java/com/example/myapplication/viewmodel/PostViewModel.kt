@@ -1,5 +1,7 @@
 package com.example.myapplication.viewmodel
 
+import android.view.View
+import androidx.constraintlayout.widget.Group
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.Post
@@ -42,9 +44,11 @@ class PostViewModel : ViewModel() {
     fun repost(id: Long) = repository.repost(id)
     fun remove(id: Long) = repository.remove(id)
     fun edit(post: Post) {
+//        Group.visibility = View.VISIBLE
         edited.value = post
     }
     fun cancel(){
+//        Group.visibility = View.GONE
         edited.value = empty
     }
 }

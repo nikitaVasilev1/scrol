@@ -15,4 +15,5 @@ of changes - http: //netology.gy/fyb</string>
     <string name="post_text">Post Text</string>
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
+    <string name="edit_message">Edit message</string>
 </resources>

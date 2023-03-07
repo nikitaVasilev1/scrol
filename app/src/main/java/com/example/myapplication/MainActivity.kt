@@ -57,11 +57,13 @@ class MainActivity : AppCompatActivity() {
                 with(binding.content) {
                     requestFocus()
                     setText(post.content)
+                    AndroidUtils.hideKeyboard(this)
                 }
             } else {
                 with(binding.content) {
                     clearFocus()
                     setText("")
+                    AndroidUtils.hideKeyboard(this)
                 }
             }
         }
