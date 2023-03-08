@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.App.likeButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="icon">@drawable/ic_like</item>
+        <item name="iconTint">@color/color_like</item>
+        <item name="minWidth">0dp</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
+        <item name="rippleColor">#FFFFFF</item>
+    </style>
+
+    <style name="Widget.App.ShareButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="icon">@drawable/ic_share</item>
+        <item name="iconTint">@color/color_share</item>
+        <item name="minWidth">0dp</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
+        <item name="rippleColor">#FFFFFF</item>
+    </style>
+
+    <style name="Widget.App.MoreButton"  parent="Widget.MaterialComponents.Button.TextButton.Icon">">
+        <item name="icon">@drawable/ic_more</item>
+        <item name="iconTint">@color/color_more</item>
+        <item name="minWidth">0dp</item>
+        <item name="rippleColor">#FFFFFF</item>
+    </style>
+
+
+</resources>

@@ -1,7 +1,4 @@
 package com.example.myapplication.viewmodel
-
-import android.view.View
-import androidx.constraintlayout.widget.Group
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.Post

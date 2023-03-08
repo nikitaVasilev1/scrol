@@ -11,12 +11,12 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.CardPostBinding
 
-interface onInteractionListener{
-    fun onLike(post:Post){}
-    fun onEdit(post:Post){}
-    fun onRemove(post:Post){}
-    fun onShare(post:Post){}
-    fun onCancel(){}
+interface onInteractionListener {
+    fun onLike(post: Post) {}
+    fun onEdit(post: Post) {}
+    fun onRemove(post: Post) {}
+    fun onShare(post: Post) {}
+    fun onCancel() {}
 }
 
 class PostAdapter(
@@ -48,9 +48,9 @@ class PostViewHolder(
             author.text = post.author
             text.text = post.content
             date.text = post.published
-            like.setImageResource(
-                if (post.likedByMe) R.drawable.liked else R.drawable.like
-            )
+            like.isChecked = post.likedByMe
+            like.text = post.likes.toString()
+            repost.text = post.reposts.toString()
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_post)
@@ -75,8 +75,8 @@ class PostViewHolder(
             repost.setOnClickListener {
                 onInteractionListener.onShare(post)
             }
-            likeText.text = post.numberOfReactrion(post.likes)
-            repostText.text = post.numberOfReactrion(post.reposts)
+            like.text = post.numberOfReactrion(post.likes)
+            repost.text = post.numberOfReactrion(post.reposts)
         }
     }
 
