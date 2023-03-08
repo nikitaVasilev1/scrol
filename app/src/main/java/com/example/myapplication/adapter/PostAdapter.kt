@@ -37,13 +37,9 @@ class PostAdapter(
 
 class PostViewHolder(
     private val binding: CardPostBinding,
-//    private val bin: ActivityMainBinding,
     private val onInteractionListener: onInteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
-        //            bin.apply {
-//                editText.text = post.content
-//            }
         binding.apply {
             author.text = post.author
             text.text = post.content

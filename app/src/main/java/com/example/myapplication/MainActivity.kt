@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.InputDevice
@@ -26,7 +27,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onShare(post: Post) {
-            viewModel.repost(post.id)
+            val intent = Intent()
+            intent.action = Intent.ACTION_SEND
+            intent.putExtra(Intent.EXTRA_TEXT, post.content)
+            intent.type = "text/plain"
+            val shareIntent = Intent.createChooser(intent, getString(R.string.post_text))
+            startActivity(shareIntent)
         }
 
         override fun onRemove(post: Post) {
@@ -42,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -55,6 +60,9 @@ class MainActivity : AppCompatActivity() {
         binding.cancel.setOnClickListener { viewModel.cancel() }
         viewModel.edited.observe(this) { post ->
             if (post.id != 0L) {
+                with(binding.editText){
+                    setText(post.content)
+                }
                 with(binding.content) {
                     binding.group.visibility = View.VISIBLE
                     requestFocus()
