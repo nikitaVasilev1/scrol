@@ -22,8 +22,6 @@ class PostRepository : Repository {
     )
     private val data = MutableLiveData(posts)
     override fun get(): LiveData<List<Post>> = data
-
-
     override fun like(id: Long) {
         posts = posts.map {
             if (it.id != id) it else it.copy(

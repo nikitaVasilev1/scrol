@@ -8,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.constraintlayout.widget.Group
 import com.example.myapplication.adapter.PostAdapter
 import com.example.myapplication.adapter.onInteractionListener
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -55,12 +56,14 @@ class MainActivity : AppCompatActivity() {
         viewModel.edited.observe(this) { post ->
             if (post.id != 0L) {
                 with(binding.content) {
+                    binding.group.visibility = View.VISIBLE
                     requestFocus()
                     setText(post.content)
                     AndroidUtils.hideKeyboard(this)
                 }
             } else {
                 with(binding.content) {
+                    binding.group.visibility = View.INVISIBLE
                     clearFocus()
                     setText("")
                     AndroidUtils.hideKeyboard(this)
@@ -84,6 +87,5 @@ class MainActivity : AppCompatActivity() {
                 AndroidUtils.hideKeyboard(this)
             }
         }
-
     }
 }

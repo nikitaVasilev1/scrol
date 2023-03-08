@@ -44,11 +44,9 @@ class PostViewModel : ViewModel() {
     fun repost(id: Long) = repository.repost(id)
     fun remove(id: Long) = repository.remove(id)
     fun edit(post: Post) {
-//        Group.visibility = View.VISIBLE
         edited.value = post
     }
     fun cancel(){
-//        Group.visibility = View.GONE
         edited.value = empty
     }
 }
