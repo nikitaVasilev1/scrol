@@ -16,4 +16,7 @@ of changes - http: //netology.gy/fyb</string>
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
     <string name="edit_message">Edit message</string>
+    <string name="save">Save</string>
+    <string name="edit_text_post">Edit text</string>
+    <string name="error_empty_content">The content cannot be empty</string>
 </resources>
